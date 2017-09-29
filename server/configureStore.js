@@ -21,4 +21,5 @@ const doesRedirect = ({ kind, pathname }, res) => {
     res.redirect(302, pathname)
     return true
   }
+  return false
 }

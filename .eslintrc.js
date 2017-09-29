@@ -8,8 +8,8 @@ module.exports = {
     sourceType: 'module',
     allowImportExportEverywhere: false
   },
-  plugins: ['flowtype'],
-  extends: ['airbnb', 'plugin:flowtype/recommended'],
+  plugins: ['flowtype', 'jsx-a11y'],
+  extends: ['airbnb', 'plugin:flowtype/recommended', 'plugin:jsx-a11y/recommended'],
   settings: {
     flowtype: {
       onlyFilesWithFlowAnnotation: true
@@ -65,7 +65,14 @@ module.exports = {
     'react/jsx-indent': 1,
     'dot-notation': 1,
     'import/no-named-default': 1,
-    'no-unused-vars': 1,
+    'no-unused-vars': [
+      1,
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
     'flowtype/no-weak-types': 1,
     'consistent-return': 1,
     'import/prefer-default-export': 1,
@@ -97,13 +104,13 @@ module.exports = {
       }
     ],
     'comma-dangle': [
-      2,
+      1,
       {
-        arrays: 'never',
-        objects: 'never',
-        imports: 'never',
-        exports: 'never',
-        functions: 'never'
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'always-multiline',
+        functions: 'only-multiline'
       }
     ],
     'max-len': [
@@ -136,6 +143,7 @@ module.exports = {
         ]
       }
     ],
-    'linebreak-style': 0
+    'linebreak-style': 0,
+    'jsx-a11y/href-no-hash': 0
   }
 }

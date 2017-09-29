@@ -2,7 +2,7 @@ import React from 'react'
 import styles from 'css/Home'
 import ArticlePromotion from 'components/ArticlePromotion'
 
-const Home = () =>
+const Home = () => (
   <div className={styles.home}>
     <h1 className={styles.title}>HOME</h1>
 
@@ -31,5 +31,6 @@ const Home = () =>
       out: @nico__delfino
     </a>
   </div>
+)
 
 export default Home

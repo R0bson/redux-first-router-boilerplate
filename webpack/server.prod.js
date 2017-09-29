@@ -30,14 +30,14 @@ module.exports = {
   output: {
     path: res('../buildServer'),
     filename: '[name].js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: 'babel-loader',
       },
       {
         test: /\.css$/,
@@ -46,28 +46,28 @@ module.exports = {
           loader: 'css-loader/locals',
           options: {
             modules: true,
-            localIdentName: '[name]__[local]--[hash:base64:5]'
-          }
-        }
-      }
-    ]
+            localIdentName: '[name]__[local]--[hash:base64:5]',
+          },
+        },
+      },
+    ],
   },
   resolve: {
     extensions: ['.js', '.jsx', '.css'],
     modules: [
       'node_modules',
-      '../src'
-    ]
+      '../src',
+    ],
   },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
-      maxChunks: 1
+      maxChunks: 1,
     }),
 
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    })
-  ]
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
+  ],
 }

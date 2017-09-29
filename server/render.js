@@ -6,27 +6,20 @@ import flushChunks from 'webpack-flush-chunks'
 import configureStore from './configureStore'
 import App from '../src/App'
 
-export default ({ clientStats }) => async (req, res, next) => {
+export default ({ clientStats }) => async (req, res, _next) => {
   const store = await configureStore(req, res)
-  if (!store) return // no store means redirect was already served
+  if (!store) return null // no store means redirect was already served
 
   const app = createApp(App, store)
   const appString = ReactDOM.renderToString(app)
   const stateJson = JSON.stringify(store.getState())
-
-
-  // webpack-flush-chunks seems to doesn't work properly with
-  // code structure where every page/component has its own
-  // directory and uses autodiscovery of index.js file.
-  // In such case it creates chunk name with '-' at the end.
-  // To fix this below is mapping of flushed name to be appended with '-'
-  const chunkNames = flushChunkNames().map(name => `${name}-`)
-  // const chunkNames = flushChunkNames()
-
+  const chunkNames = flushChunkNames()
   const { js, styles, cssHash } = flushChunks(clientStats, { chunkNames })
 
+  /* eslint-disable no-console */
   console.log('REQUESTED PATH:', req.path)
   console.log('CHUNK NAMES RENDERED', chunkNames)
+  /* eslint-disable no-console */
 
   return res.send(
     `<!doctype html>
@@ -47,7 +40,8 @@ export default ({ clientStats }) => async (req, res, next) => {
   )
 }
 
-const createApp = (App, store) =>
+const createApp = (App, store) => (
   <Provider store={store}>
     <App />
   </Provider>
+)

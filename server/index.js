@@ -23,18 +23,21 @@ if (DEV) {
   app.use(
     // keeps serverRender updated with arg: { clientStats, outputPath }
     webpackHotServerMiddleware(multiCompiler, {
-      serverRendererOptions: { outputPath }
-    })
+      serverRendererOptions: { outputPath },
+    }),
   )
 }
 else {
+  /* eslint-disable global-require */
   const clientStats = require('../buildClient/stats.json') // eslint-disable-line import/no-unresolved
   const serverRender = require('../buildServer/main.js').default // eslint-disable-line import/no-unresolved
+  /* eslint-disable global-require */
 
   app.use(publicPath, express.static(outputPath))
   app.use(serverRender({ clientStats, outputPath }))
 }
 
 app.listen(3000, () => {
+  // eslint-disable-next-line
   console.log('Listening @ http://localhost:3000/')
 })

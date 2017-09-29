@@ -18,7 +18,7 @@ export default (history, preloadedState) => {
 
   if (module.hot && process.env.NODE_ENV === 'development') {
     module.hot.accept('./reducers/index', () => {
-      const reducers = require('./reducers/index')
+      const reducers = require('./reducers/index') // eslint-disable-line global-require
       const rootReducer = combineReducers({ ...reducers, location: reducer })
       store.replaceReducer(rootReducer)
     })

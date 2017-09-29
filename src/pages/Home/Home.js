@@ -1,8 +1,9 @@
 import React from 'react'
-import styles from 'css/Home'
+// import PropTypes from 'prop-types'
+import styles from 'css/Home.css'
 import ArticlePromotion from 'components/ArticlePromotion'
 
-const Home = () => (
+const Home = ({ page }) => (
   <div className={styles.home}>
     <h1 className={styles.title}>HOME</h1>
 
@@ -32,5 +33,9 @@ const Home = () => (
     </a>
   </div>
 )
+
+Home.propTypes = {
+  // page: PropTypes.string.isRequired,
+}
 
 export default Home

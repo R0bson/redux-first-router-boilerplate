@@ -46,8 +46,8 @@ module.exports = {
       {
         js: 'never',
         jsx: 'never',
-        styl: 'never',
-        css: 'never'
+        styl: 'always',
+        css: 'always'
       }
     ],
     'no-shadow': 0,

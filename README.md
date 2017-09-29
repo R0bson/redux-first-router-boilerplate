@@ -19,6 +19,19 @@ yarn
 yarn start
 ```
 
+## Running tests
+Single run of tests with coverage.
+```
+yarn test
+```
+Run tests in watch mode (stops after first error)
+```
+yarn test:watch
+```
+If you need to run all tests on each change
+```
+yarn test:watchAll
+```
 
 ## Files You Should Look At:
 
@@ -33,5 +46,3 @@ yarn start
 - [***server/index.js***](./server/index.js)
 - [***server/render.js***](./server/render.js) - *(super simple thanks to [webpack-flush-chunks](https://github.com/faceyspacey/webpack-flush-chunks) from our ***"Universal"*** product line)*
 - [***server/configureStore.js***](./server/configureStore.js) - ***(observe how the matched route's thunk is awaited on)***
-
-

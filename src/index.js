@@ -1,3 +1,4 @@
+import 'raf'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
@@ -12,7 +13,7 @@ const { store } = configureStore(history, window.REDUX_STATE)
 const render = App => {
   const root = document.getElementById('root')
 
-  ReactDOM.render(
+  ReactDOM.hydrate(
     <AppContainer>
       <Provider store={store}>
         <App />

@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from 'css/App'
+import styles from 'css/App.css'
 
 export default ({ title, text, url }) => (
   <div>

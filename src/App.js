@@ -1,6 +1,6 @@
 import React from 'react'
+import styles from 'css/App.css'
 import Switcher from './pages/Switcher'
-import styles from './css/App'
 
 export default () => (
   <div className={styles.app}>

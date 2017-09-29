@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
 import configureStore from './configureStore'
-import App from '../src/components/App'
+import App from '../src/App'
 
 export default ({ clientStats }) => async (req, res, next) => {
   const store = await configureStore(req, res)
@@ -13,7 +13,16 @@ export default ({ clientStats }) => async (req, res, next) => {
   const app = createApp(App, store)
   const appString = ReactDOM.renderToString(app)
   const stateJson = JSON.stringify(store.getState())
-  const chunkNames = flushChunkNames()
+
+
+  // webpack-flush-chunks seems to doesn't work properly with
+  // code structure where every page/component has its own
+  // directory and uses autodiscovery of index.js file.
+  // In such case it creates chunk name with '-' at the end.
+  // To fix this below is mapping of flushed name to be appended with '-'
+  const chunkNames = flushChunkNames().map(name => `${name}-`)
+  // const chunkNames = flushChunkNames()
+
   const { js, styles, cssHash } = flushChunks(clientStats, { chunkNames })
 
   console.log('REQUESTED PATH:', req.path)

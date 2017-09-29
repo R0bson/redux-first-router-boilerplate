@@ -1,6 +1,6 @@
 import React from 'react'
-import styles from '../css/Home'
-import ArticlePromotion from './ArticlePromotion'
+import styles from '../../css/Home'
+import ArticlePromotion from '../../components/ArticlePromotion'
 
 const Home = () =>
   <div className={styles.home}>
@@ -13,7 +13,7 @@ const Home = () =>
         style={{ height: 300 }}
       />
       <span className={styles.caption}>RFR will become Rudy</span>
-
+      
       <ArticlePromotion
         title='Wanna master SSR? Read:'
         text='Server-Render Like a Pro in 10 Steps /w Redux-First Router 🚀'

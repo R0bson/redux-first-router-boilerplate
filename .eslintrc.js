@@ -17,6 +17,9 @@ module.exports = {
     'import/resolver': {
       node: {
         extensions: ['.js', '.json', '.css', '.styl']
+      },
+      webpack: {
+        config: 'webpack/client.dev.js',
       }
     }
   },

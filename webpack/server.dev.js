@@ -55,7 +55,11 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.css']
+    extensions: ['.js', '.jsx', '.css'],
+    modules: [
+      'node_modules',
+      '../src'
+    ]
   },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({

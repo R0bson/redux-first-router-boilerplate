@@ -1,8 +1,11 @@
 import React from 'react'
+import { Button } from 'material-ui'
 import { shallow } from 'enzyme'
-import Component, { Internal } from './Home'
+import Component, { Internal } from './AppBar'
 
-describe('Home', () => {
+// const shallow = createShallow()
+
+describe('AppBar', () => {
   describe('rendering', () => {
     it('should return function', () => {
       expect(typeof Component).toBe('function')
@@ -17,10 +20,10 @@ describe('Home', () => {
       expect(wrapper.exists()).toBe(true)
     })
 
-    it('should display "Redux First Router Boilerplate" text', () => {
-      const wrapper = shallow(<Component />).dive()
+    it('should contains Login button', () => {
+      const wrapper = shallow(<Component />)
       wrapper.debug()
-      expect(wrapper.contains('Redux First Router Boilerplate')).toBe(true)
+      expect(wrapper.dive().contains(<Button color="contrast">Login</Button>)).toBe(true)
     })
   })
 })

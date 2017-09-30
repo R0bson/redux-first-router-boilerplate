@@ -81,7 +81,7 @@ module.exports = {
     'no-case-declarations': 1,
     semi: [2, 'never'],
     'flowtype/semi': [2, 'never'],
-    'jsx-quotes': [2, 'prefer-single'],
+    'jsx-quotes': [2, 'prefer-double'],
     'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.js'] }],
     'spaced-comment': [2, 'always', { markers: ['?'] }],
     'arrow-parens': [2, 'as-needed', { requireForBlockBody: false }],

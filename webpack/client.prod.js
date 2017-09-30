@@ -2,7 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const StatsPlugin = require('stats-webpack-plugin')
-const AutoDllPlugin = require('autodll-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+// const AutoDllPlugin = require('autodll-webpack-plugin')
 
 module.exports = {
   name: 'client',
@@ -57,38 +58,54 @@ module.exports = {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        screw_ie8: true,
-        warnings: false,
-      },
-      mangle: {
-        screw_ie8: true,
-      },
-      output: {
-        screw_ie8: true,
-        comments: false,
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     screw_ie8: true,
+    //     warnings: false,
+    //   },
+    //   mangle: {
+    //     screw_ie8: true,
+    //   },
+    //   output: {
+    //     screw_ie8: true,
+    //     comments: false,
+    //   },
+    //   sourceMap: true,
+    // }),
+    new UglifyJSPlugin({
+      uglifyOptions: {
+        compress: {
+          screw_ie8: true,
+          warnings: false,
+        },
+        mangle: {
+          screw_ie8: true,
+        },
+        output: {
+          screw_ie8: true,
+          comments: false,
+        },
       },
       sourceMap: true,
     }),
     new webpack.HashedModuleIdsPlugin(), // not needed for strategy to work (just good practice)
-    new AutoDllPlugin({
-      context: path.join(__dirname, '..'),
-      filename: '[name].js',
-      entry: {
-        vendor: [
-          'react',
-          'react-dom',
-          'react-redux',
-          'redux',
-          'history/createBrowserHistory',
-          'transition-group',
-          'redux-first-router',
-          'redux-first-router-link',
-          'babel-polyfill',
-          'redux-devtools-extension/logOnlyInProduction',
-        ],
-      },
-    }),
+    // new AutoDllPlugin({
+    //   context: path.join(__dirname, '..'),
+    //   filename: '[name].js',
+    //   entry: {
+    //     vendor: [
+    //       'react',
+    //       'react-dom',
+    //       'react-redux',
+    //       'redux',
+    //       'history/createBrowserHistory',
+    //       'transition-group',
+    //       'redux-first-router',
+    //       'redux-first-router-link',
+    //       'babel-polyfill',
+    //       'redux-devtools-extension/logOnlyInProduction',
+    //     ],
+    //   },
+    // }),
   ],
 }

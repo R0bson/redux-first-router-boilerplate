@@ -1,7 +1,7 @@
 {
   "presets": [["env", {
     "targets": {
-      "node": "6.10"
+      "node": "4.8"
     }
     }], "react", "stage-2"],
   "plugins": ["universal-import"],

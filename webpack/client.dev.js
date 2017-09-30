@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const WriteFilePlugin = require('write-file-webpack-plugin')
-const AutoDllPlugin = require('autodll-webpack-plugin')
+// const AutoDllPlugin = require('autodll-webpack-plugin')
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 
 module.exports = {
@@ -65,23 +65,23 @@ module.exports = {
         NODE_ENV: JSON.stringify('development'),
       },
     }),
-    new AutoDllPlugin({
-      context: path.join(__dirname, '..'),
-      filename: '[name].js',
-      entry: {
-        vendor: [
-          'react',
-          'react-dom',
-          'react-redux',
-          'redux',
-          'history/createBrowserHistory',
-          'transition-group',
-          'redux-first-router',
-          'redux-first-router-link',
-          'babel-polyfill',
-          'redux-devtools-extension/logOnlyInProduction',
-        ],
-      },
-    }),
+    // new AutoDllPlugin({
+    //   context: path.join(__dirname, '..'),
+    //   filename: '[name].js',
+    //   entry: {
+    //     vendor: [
+    //       'react',
+    //       'react-dom',
+    //       'react-redux',
+    //       'redux',
+    //       'history/createBrowserHistory',
+    //       'transition-group',
+    //       'redux-first-router',
+    //       'redux-first-router-link',
+    //       'babel-polyfill',
+    //       'redux-devtools-extension/logOnlyInProduction',
+    //     ],
+    //   },
+    // }),
   ],
 }

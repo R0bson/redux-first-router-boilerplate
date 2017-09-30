@@ -1,11 +1,5 @@
 {
-  "presets": [
-    ["env", {
-      "targets": {
-        "node": "6.10"
-      }
-    }],
-  "react", "stage-2"],
+  "presets": ["es2015", "react", "stage-2"],
   "plugins": ["universal-import"],
   "env": {
     "development": {

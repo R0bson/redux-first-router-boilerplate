@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ArticlePromotion from 'components/ArticlePromotion'
 import AppBar from 'components/AppBar'
+import OutboundLink from 'components/OutboundLink'
 import Paper from 'material-ui/Paper'
 import Grid from 'material-ui/Grid'
 import Button from 'material-ui/Button'
@@ -48,7 +49,10 @@ const Home = ({ classes }) => (
         </Grid>
       </Grid>
 
-
+      <OutboundLink href="https://twitter.com/nico__delfino" center>
+        *One of our first users, Nicolas Delfino, designed the logo, check him
+        out: @nico__delfino
+      </OutboundLink>
       <Typography component="div" align="center">
         <Button
           className={classes.link}
@@ -62,7 +66,7 @@ const Home = ({ classes }) => (
           out: @nico__delfino
         </Button>
       </Typography>
-      
+
     </main>
   </div>
 )

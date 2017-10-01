@@ -1,6 +1,6 @@
 
 module.exports = {
-  coverageDirectory: 'reports/converage',
+  coverageDirectory: 'reports/coverage',
   moduleFileExtensions: ['js', 'jsx'],
   moduleDirectories: ['node_modules', 'src'],
   setupFiles: ['./setup/shimRAF.js', './setup/setupTests.js'],

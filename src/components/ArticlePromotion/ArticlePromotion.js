@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from 'css/App.css'
+import React from "react"
+import styles from "css/App.css"
 
 export default ({ title, text, url }) => (
   <div>
@@ -8,8 +8,8 @@ export default ({ title, text, url }) => (
     <a
       className={styles.link}
       href={url}
-      target='_blank'
-      rel='noopener noreferrer'
+      target="_blank"
+      rel="noopener noreferrer"
     >
       {text}
     </a>

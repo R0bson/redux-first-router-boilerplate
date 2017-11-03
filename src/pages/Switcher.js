@@ -1,11 +1,15 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import universal from 'react-universal-component'
-import styles from 'css/Switcher.css'
+import React from "react"
+import { connect } from "react-redux"
+import universal from "react-universal-component"
+import styles from "css/Switcher.css"
 
 const UniversalComponent = universal(({ page }) => import(`./${page}`), {
   minDelay: 500,
-  loading: () => <div className={styles.spinner}><div /></div>,
+  loading: () => (
+    <div className={styles.spinner}>
+      <div />
+    </div>
+  ),
   error: () => <div className={styles.notFound}>PAGE NOT FOUND - 404</div>,
 })
 

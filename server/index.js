@@ -1,13 +1,13 @@
-import 'babel-polyfill'
-import express from 'express'
-import webpack from 'webpack'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
-import webpackHotServerMiddleware from 'webpack-hot-server-middleware'
-import clientConfig from '../webpack/client.dev'
-import serverConfig from '../webpack/server.dev'
+import "babel-polyfill"
+import express from "express"
+import webpack from "webpack"
+import webpackDevMiddleware from "webpack-dev-middleware"
+import webpackHotMiddleware from "webpack-hot-middleware"
+import webpackHotServerMiddleware from "webpack-hot-server-middleware"
+import clientConfig from "../webpack/client.dev"
+import serverConfig from "../webpack/server.dev"
 
-const DEV = process.env.NODE_ENV === 'development'
+const DEV = process.env.NODE_ENV === "development"
 const publicPath = clientConfig.output.publicPath
 const outputPath = clientConfig.output.path
 const app = express()
@@ -26,11 +26,10 @@ if (DEV) {
       serverRendererOptions: { outputPath },
     }),
   )
-}
-else {
+} else {
   /* eslint-disable global-require */
-  const clientStats = require('../buildClient/stats.json') // eslint-disable-line import/no-unresolved
-  const serverRender = require('../buildServer/main.js').default // eslint-disable-line import/no-unresolved
+  const clientStats = require("../buildClient/stats.json") // eslint-disable-line import/no-unresolved
+  const serverRender = require("../buildServer/main.js").default // eslint-disable-line import/no-unresolved
   /* eslint-disable global-require */
 
   app.use(publicPath, express.static(outputPath))
@@ -39,5 +38,5 @@ else {
 
 app.listen(3000, () => {
   // eslint-disable-next-line
-  console.log('Listening @ http://localhost:3000/')
+  console.log("Listening @ http://localhost:3000/")
 })

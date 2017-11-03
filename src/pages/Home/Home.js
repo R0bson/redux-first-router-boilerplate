@@ -1,32 +1,32 @@
-import React from 'react'
+import React from "react"
 // import PropTypes from 'prop-types'
-import styles from 'css/Home.css'
-import ArticlePromotion from 'components/ArticlePromotion'
+import styles from "css/Home.css"
+import ArticlePromotion from "components/ArticlePromotion"
 
-const Home = ({ page }) => (
+const Home = _props => (
   <div className={styles.home}>
     <h1 className={styles.title}>HOME</h1>
 
     <div className={styles.content}>
       <img
-        src='https://cdn.reactlandia.com/rudy-logo.png'
-        alt='logo'
+        src="https://cdn.reactlandia.com/rudy-logo.png"
+        alt="logo"
         style={{ height: 300 }}
       />
       <span className={styles.caption}>RFR will become Rudy</span>
 
       <ArticlePromotion
-        title='Wanna master SSR? Read:'
-        text='Server-Render Like a Pro in 10 Steps /w Redux-First Router 🚀'
-        url='https://medium.com/faceyspacey/server-render-like-a-pro-w-redux-first-router-in-10-steps-b27dd93859de'
+        title="Wanna master SSR? Read:"
+        text="Server-Render Like a Pro in 10 Steps /w Redux-First Router 🚀"
+        url="https://medium.com/faceyspacey/server-render-like-a-pro-w-redux-first-router-in-10-steps-b27dd93859de"
       />
     </div>
 
     <a
       className={styles.nico}
-      href='https://twitter.com/nico__delfino'
-      target='_blank'
-      rel='noopener noreferrer'
+      href="https://twitter.com/nico__delfino"
+      target="_blank"
+      rel="noopener noreferrer"
     >
       *One of our first users, Nicolas Delfino, designed the logo, check him
       out: @nico__delfino

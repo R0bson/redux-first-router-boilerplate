@@ -1,1 +1,1 @@
-export { default } from './ArticlePromotion'
+export { default } from "./ArticlePromotion"

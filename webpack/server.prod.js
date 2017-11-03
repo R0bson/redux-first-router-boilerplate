@@ -1,6 +1,6 @@
-const fs = require('fs')
-const path = require('path')
-const webpack = require('webpack')
+const fs = require("fs")
+const path = require("path")
+const webpack = require("webpack")
 
 const res = p => path.resolve(__dirname, p)
 
@@ -9,12 +9,12 @@ const res = p => path.resolve(__dirname, p)
 // `require-universal-module` so that they know they are running
 // within Webpack and can properly make connections to client modules:
 const externals = fs
-  .readdirSync(res('../node_modules'))
+  .readdirSync(res("../node_modules"))
   .filter(
     x =>
       !/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/.test(
-        x
-      )
+        x,
+      ),
   )
   .reduce((externals, mod) => {
     externals[mod] = `commonjs ${mod}`
@@ -22,42 +22,39 @@ const externals = fs
   }, {})
 
 module.exports = {
-  name: 'server',
-  target: 'node',
-  devtool: 'source-map',
-  entry: [res('../server/render.js')],
+  name: "server",
+  target: "node",
+  devtool: "source-map",
+  entry: [res("../server/render.js")],
   externals,
   output: {
-    path: res('../buildServer'),
-    filename: '[name].js',
-    libraryTarget: 'commonjs2',
+    path: res("../buildServer"),
+    filename: "[name].js",
+    libraryTarget: "commonjs2",
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: "babel-loader",
       },
       {
         test: /\.css$/,
         exclude: /node_modules/,
         use: {
-          loader: 'css-loader/locals',
+          loader: "css-loader/locals",
           options: {
             modules: true,
-            localIdentName: '[name]__[local]--[hash:base64:5]',
+            localIdentName: "[name]__[local]--[hash:base64:5]",
           },
         },
       },
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
-    modules: [
-      'node_modules',
-      '../src',
-    ],
+    extensions: [".js", ".jsx"],
+    modules: ["node_modules", "../src"],
   },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
@@ -65,8 +62,8 @@ module.exports = {
     }),
 
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
+      "process.env": {
+        NODE_ENV: JSON.stringify("production"),
       },
     }),
   ],

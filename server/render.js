@@ -1,10 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom/server'
-import { Provider } from 'react-redux'
-import { flushChunkNames } from 'react-universal-component/server'
-import flushChunks from 'webpack-flush-chunks'
-import configureStore from './configureStore'
-import App from '../src/App'
+import React from "react"
+import ReactDOM from "react-dom/server"
+import { Provider } from "react-redux"
+import { flushChunkNames } from "react-universal-component/server"
+import flushChunks from "webpack-flush-chunks"
+import configureStore from "./configureStore"
+import App from "../src/App"
 
 export default ({ clientStats }) => async (req, res, _next) => {
   const store = await configureStore(req, res)
@@ -17,12 +17,11 @@ export default ({ clientStats }) => async (req, res, _next) => {
   const { js, styles, cssHash } = flushChunks(clientStats, { chunkNames })
 
   /* eslint-disable no-console */
-  console.log('REQUESTED PATH:', req.path)
-  console.log('CHUNK NAMES RENDERED', chunkNames)
+  console.log("REQUESTED PATH:", req.path)
+  console.log("CHUNK NAMES RENDERED", chunkNames)
   /* eslint-disable no-console */
 
-  return res.send(
-    `<!doctype html>
+  return res.send(`<!doctype html>
       <html>
         <head>
           <meta charset="utf-8">
@@ -36,8 +35,7 @@ export default ({ clientStats }) => async (req, res, _next) => {
           <script type='text/javascript' src='/static/vendor.js'></script>
           ${js}
         </body>
-      </html>`
-  )
+      </html>`)
 }
 
 const createApp = (App, store) => (

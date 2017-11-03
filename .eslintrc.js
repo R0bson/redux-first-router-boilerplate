@@ -1,120 +1,127 @@
 module.exports = {
-  parser: 'babel-eslint',
+  root: true,
+  parser: "babel-eslint",
   parserOptions: {
     ecmaFeatures: {
       generators: true,
-      experimentalObjectRestSpread: true
+      experimentalObjectRestSpread: true,
+      impliedStrict: true,
+      jsx: true,
     },
-    sourceType: 'module',
-    allowImportExportEverywhere: false
+    sourceType: "module",
+    allowImportExportEverywhere: false,
   },
-  plugins: ['flowtype', 'jsx-a11y'],
-  extends: ['airbnb', 'plugin:flowtype/recommended', 'plugin:jsx-a11y/recommended'],
+  plugins: ["prettier", "jsx-a11y"],
+  extends: [
+    "eslint:recommended",
+    "airbnb",
+    "plugin:jsx-a11y/recommended",
+    // "prettier",
+  ],
   settings: {
-    flowtype: {
-      onlyFilesWithFlowAnnotation: true
-    },
-    'import/resolver': {
+    "import/resolver": {
       node: {
-        extensions: ['.js', '.json', '.css', '.styl']
+        extensions: [".js", ".jsx", ".json", ".css"],
       },
       webpack: {
-        config: 'webpack/client.dev.js',
-      }
-    }
+        config: "webpack/client.dev.js",
+      },
+    },
   },
-  globals: {
-    window: true,
-    document: true,
-    __dirname: true,
-    __DEV__: true,
-    CONFIG: true,
-    process: true,
+  env: {
     jest: true,
-    describe: true,
-    test: true,
-    it: true,
-    expect: true,
-    beforeEach: true,
-    fetch: true,
-    alert: true
   },
+  // globals: {
+  // browser: true,
+  // window: true,
+  // document: true,
+  // __dirname: true,
+  // __DEV__: true,
+  // CONFIG: true,
+  // process: true,
+  // jest: true,
+  // describe: true,
+  // test: true,
+  // it: true,
+  // expect: true,
+  // beforeEach: true,
+  // fetch: true,
+  // alert: true
+  // },
   rules: {
-    'import/extensions': [
-      'error',
-      'always',
+    "import/extensions": [
+      "error",
+      "always",
       {
-        js: 'never',
-        jsx: 'never',
-        styl: 'always',
-        css: 'always'
-      }
+        js: "never",
+        jsx: "never",
+        styl: "always",
+        css: "always",
+      },
     ],
-    'no-shadow': 0,
-    'no-use-before-define': 0,
-    'no-param-reassign': 0,
-    'react/prop-types': 0,
-    'react/no-render-return-value': 0,
-    'no-confusing-arrow': 0,
-    'no-underscore-dangle': 0,
-    'no-plusplus': 0,
-    camelcase: 1,
-    'prefer-template': 1,
-    'react/no-array-index-key': 1,
-    'global-require': 1,
-    'react/jsx-indent': 1,
-    'dot-notation': 1,
-    'import/no-named-default': 1,
-    'no-unused-vars': [
-      1,
+    "no-shadow": "off",
+    "no-use-before-define": "off",
+    "no-param-reassign": "off",
+    "react/prop-types": "off",
+    "react/no-render-return-value": "off",
+    "no-confusing-arrow": "off",
+    "no-underscore-dangle": "off",
+    "no-plusplus": "off",
+    camelcase: "warn",
+    "prefer-template": "warn",
+    "react/no-array-index-key": "warn",
+    "global-require": "warn",
+    "dot-notation": "warn",
+    "import/no-named-default": "warn",
+    "no-unused-vars": [
+      "warn",
       {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_",
-        "caughtErrorsIgnorePattern": "^_"
-      }
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+        caughtErrorsIgnorePattern: "^_",
+      },
     ],
-    'flowtype/no-weak-types': 1,
-    'consistent-return': 1,
-    'import/prefer-default-export': 1,
-    'no-console': 1,
-    'jsx-a11y/no-static-element-interactions': 1,
-    'no-case-declarations': 1,
-    semi: [2, 'never'],
-    'flowtype/semi': [2, 'never'],
-    'jsx-quotes': [2, 'prefer-single'],
-    'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.js'] }],
-    'spaced-comment': [2, 'always', { markers: ['?'] }],
-    'arrow-parens': [2, 'as-needed', { requireForBlockBody: false }],
-    'brace-style': [2, 'stroustrup'],
-    'import/no-unresolved': [2, { commonjs: true, caseSensitive: true }],
-    'no-unused-expressions': [
-      2,
+    "consistent-return": "warn",
+    "import/prefer-default-export": "warn",
+    "no-console": "warn",
+    "jsx-a11y/no-static-element-interactions": "warn",
+    "no-case-declarations": "warn",
+    semi: ["error", "never"],
+    quotes: ["error", "double"],
+    "jsx-quotes": ["error", "prefer-double"],
+    "react/jsx-filename-extension": ["error", { extensions: [".jsx", ".js"] }],
+    "spaced-comment": ["error", "always", { markers: ["?"] }],
+    "arrow-parens": ["error", "as-needed", { requireForBlockBody: false }],
+    "brace-style": ["error", "1tbs"],
+    "import/no-unresolved": ["error", { commonjs: true, caseSensitive: true }],
+    "no-unused-expressions": [
+      "error",
       {
         allowShortCircuit: true,
         allowTernary: true,
-        allowTaggedTemplates: true
-      }
+        allowTaggedTemplates: true,
+      },
     ],
-    'import/no-extraneous-dependencies': [
-      'error',
+    "import/no-extraneous-dependencies": [
+      "error",
       {
         devDependencies: true,
         optionalDependencies: true,
-        peerDependencies: true
-      }
+        peerDependencies: true,
+      },
     ],
-    'comma-dangle': [
-      1,
+    "comma-dangle": [
+      "warn",
       {
-        arrays: 'always-multiline',
-        objects: 'always-multiline',
-        imports: 'always-multiline',
-        exports: 'always-multiline',
-        functions: 'only-multiline'
-      }
+        arrays: "always-multiline",
+        objects: "always-multiline",
+        imports: "always-multiline",
+        exports: "always-multiline",
+        functions: "only-multiline",
+      },
     ],
-    'max-len': [
-      'error',
+    "max-len": [
+      "error",
       {
         code: 80,
         tabWidth: 2,
@@ -122,28 +129,34 @@ module.exports = {
         ignoreComments: true,
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
-        ignoreTemplateLiterals: true
-      }
+        ignoreTemplateLiterals: true,
+      },
     ],
-    'react/sort-comp': [
-      2,
+    "react/sort-comp": [
+      "error",
       {
         order: [
-          'propTypes',
-          'props',
-          'state',
-          'defaultProps',
-          'contextTypes',
-          'childContextTypes',
-          'getChildContext',
-          'static-methods',
-          'lifecycle',
-          'everything-else',
-          'render'
-        ]
-      }
+          "propTypes",
+          "props",
+          "state",
+          "defaultProps",
+          "contextTypes",
+          "childContextTypes",
+          "getChildContext",
+          "static-methods",
+          "lifecycle",
+          "everything-else",
+          "render",
+        ],
+      },
     ],
-    'linebreak-style': 0,
-    'jsx-a11y/href-no-hash': 0
-  }
+    "linebreak-style": "off",
+    "jsx-a11y/href-no-hash": "off",
+    "prettier/prettier": "error",
+    "object-curly-newline": "off",
+    "function-paren-newline": "off",
+    "react/jsx-indent": "off",
+    "react/jsx-closing-tag-location": "off",
+    "prefer-destructuring": "off",
+  },
 }

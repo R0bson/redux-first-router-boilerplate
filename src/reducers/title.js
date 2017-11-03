@@ -1,7 +1,7 @@
-export default (state = 'RFR Demo', action = {}) => {
+export default (state = "RFR Demo", action = {}) => {
   switch (action.type) {
-    case 'HOME':
-      return 'RFR Boilerplate'
+    case "HOME":
+      return "RFR Boilerplate"
     default:
       return state
   }

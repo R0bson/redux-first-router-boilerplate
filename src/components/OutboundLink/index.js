@@ -1,1 +1,1 @@
-export { default } from './OutboundLink'
+export { default } from "./OutboundLink"

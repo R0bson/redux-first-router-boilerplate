@@ -19,8 +19,10 @@
     "lint": "eslint --fix src server webpack",
     "format": "prettier --single-quote --semi=true --write '{src,server,webpack}/**/*.js' && npm run lint",
     "test": "NODE_ENV=test jest --coverage",
-    "test:watch": "jest --watch --bail",
-    "test:watchAll": "jest --watchAll --bail"
+    "test:watch": "jest --watch",
+    "test:watchAll": "jest --watchAll",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
@@ -78,7 +80,10 @@
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.18.2",
     "webpack-hot-server-middleware": "^0.1.0",
-    "write-file-webpack-plugin": "^4.1.0"
+    "write-file-webpack-plugin": "^4.1.0",
+    "@storybook/react": "^3.2.11",
+    "@storybook/addon-actions": "^3.2.11",
+    "@storybook/addon-links": "^3.2.10"
   },
   "config": {
     "commitizen": {

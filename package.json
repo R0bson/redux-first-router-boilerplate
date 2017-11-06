@@ -6,18 +6,24 @@
   "author": "James Gillmore <james@faceyspacey.com>",
   "license": "MIT",
   "scripts": {
-    "start": "npm run clean && cross-env NODE_ENV=development babel-watch server/index.js",
+    "start":
+      "npm run clean && cross-env NODE_ENV=development babel-watch server/index.js",
     "start:prod": "npm run build && npm run serve",
     "serve": "cross-env NODE_ENV=production node buildServer/index.js",
-    "build": "npm run build:client && npm run build:server && npm run build:node",
-    "build:client": "rimraf buildClient && cross-env NODE_ENV=production webpack --progress -p --config webpack/client.prod.js",
-    "build:server": "rimraf buildServer && cross-env NODE_ENV=production webpack --progress -p --config webpack/server.prod.js",
-    "build:node": "cross-env NODE_ENV=production babel server/index.js -o buildServer/index.js",
+    "build":
+      "npm run build:client && npm run build:server && npm run build:node",
+    "build:client":
+      "rimraf buildClient && cross-env NODE_ENV=production webpack --progress -p --config webpack/client.prod.js",
+    "build:server":
+      "rimraf buildServer && cross-env NODE_ENV=production webpack --progress -p --config webpack/server.prod.js",
+    "build:node":
+      "cross-env NODE_ENV=production babel server/index.js -o buildServer/index.js",
     "clean": "rimraf buildClient buildServer",
     "precommit": "lint-staged",
     "cm": "git-cz",
     "lint:eslint": "eslint --fix src server webpack",
-    "lint:prettier": "prettier --trailing-comma all --no-semi --write '{src,server,webpack}/**/*.js'",
+    "lint:prettier":
+      "prettier --trailing-comma all --no-semi --write '{src,server,webpack}/**/*.js'",
     "lint": "yarn lint:prettier && yarn lint:eslint",
     "test": "NODE_ENV=test jest --coverage",
     "test:watch": "jest --watch",
@@ -61,6 +67,7 @@
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.7",
     "cz-conventional-changelog": "^2.0.0",
+    "documentation": "^5.3.3",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
     "eslint": "^4.7.2",
@@ -94,7 +101,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,json,css,sass,scss}": [
+    "*.{js,jsx}": [
       "prettier --trailing-comma all --no-semi --write",
       "eslint --fix",
       "git add"

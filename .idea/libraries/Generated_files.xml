@@ -3,9 +3,11 @@
     <properties>
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/webpack/.eslintrc.js" />
+        <item url="file://$PROJECT_DIR$/src/components/ArticlePromotion/ArticlePromotion.js" />
         <item url="file://$PROJECT_DIR$/stories/.eslintrc.js" />
         <item url="file://$PROJECT_DIR$/.eslintrc.js" />
         <item url="file://$PROJECT_DIR$/server/.eslintrc.js" />
+        <item url="file://$PROJECT_DIR$/setup/setupTests.js" />
         <item url="file://$PROJECT_DIR$/src/.eslintrc.js" />
         <item url="file://$PROJECT_DIR$/server/configureStore.js" />
         <item url="file://$PROJECT_DIR$/src/pages/Home/Home.js" />
@@ -17,9 +19,11 @@
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/webpack/.eslintrc.js" />
+      <root url="file://$PROJECT_DIR$/src/components/ArticlePromotion/ArticlePromotion.js" />
       <root url="file://$PROJECT_DIR$/stories/.eslintrc.js" />
       <root url="file://$PROJECT_DIR$/.eslintrc.js" />
       <root url="file://$PROJECT_DIR$/server/.eslintrc.js" />
+      <root url="file://$PROJECT_DIR$/setup/setupTests.js" />
       <root url="file://$PROJECT_DIR$/src/.eslintrc.js" />
       <root url="file://$PROJECT_DIR$/server/configureStore.js" />
       <root url="file://$PROJECT_DIR$/src/pages/Home/Home.js" />
